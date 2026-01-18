@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import Task from "../models/test";
 
 const router = Router();
 
@@ -39,6 +40,26 @@ router.get("/search", (req: Request, res: Response) => {
     messgae: "Query received",
     status,
     page,
+  });
+});
+
+//Create Task
+router.post("/task", async (req: Request, res: Response) => {
+  const { title } = req.body;
+  const task = await Task.create({ title });
+  res.status(201).json({
+    messgae: "Task created successfully",
+    task,
+  });
+});
+
+//get all Tasks
+router.get("/task", async (req: Request, res: Response) => {
+  const tasks = await Task.find();
+
+  res.json({
+    message: "Task fetched",
+    tasks,
   });
 });
 
