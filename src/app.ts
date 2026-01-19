@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import testRoutes from "./routes/test";
+import { errorHandler } from "./middlewares/error";
 
 const app = express();
 
@@ -18,5 +19,7 @@ app.get("/health", (req: Request, res: Response) => {
     message: "Server is running",
   });
 });
+
+app.use(errorHandler);
 
 export default app;

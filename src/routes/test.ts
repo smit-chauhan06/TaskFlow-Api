@@ -1,5 +1,7 @@
 import { Request, Response, Router } from "express";
 import Task from "../models/test";
+import { asyncHandler } from "../utils/asyncHandler";
+import { ApiError } from "../utils/ApiError";
 
 const router = Router();
 
@@ -44,14 +46,23 @@ router.get("/search", (req: Request, res: Response) => {
 });
 
 //Create Task
-router.post("/task", async (req: Request, res: Response) => {
-  const { title } = req.body;
-  const task = await Task.create({ title });
-  res.status(201).json({
-    messgae: "Task created successfully",
-    task,
-  });
-});
+router.post(
+  "/task",
+  asyncHandler(async (req: Request, res: Response) => {
+    const { title } = req.body;
+
+    if (!title) {
+      throw new ApiError(400, "Title is required");
+    }
+
+    const task = await Task.create({ title });
+
+    res.status(201).json({
+      success: true,
+      task,
+    });
+  }),
+);
 
 //get all Tasks
 router.get("/task", async (req: Request, res: Response) => {
