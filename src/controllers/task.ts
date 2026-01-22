@@ -21,3 +21,27 @@ export const getTasksController = asyncHandler(
     });
   },
 );
+
+export const updateTaskController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const task = await taskService.updateTask(
+      req.params.id as string,
+      req.body,
+    );
+    res.json({
+      success: true,
+      task,
+    });
+  },
+);
+
+export const deleteTaskController = asyncHandler(
+  async (req: Request, res: Response) => {
+    await taskService.deleteTask(req.params.id as string);
+
+    res.json({
+      success: true,
+      message: "Task deleted",
+    });
+  },
+);
