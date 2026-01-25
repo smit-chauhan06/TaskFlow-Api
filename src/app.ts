@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import taskRoutes from "./routes/task";
+import authRoutes from "./routes/auth";
 import { errorHandler } from "./middlewares/error";
 
 const app = express();
@@ -14,6 +15,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 // Routes
 app.use("/api/v1", taskRoutes);
+
+app.use("/api/v1", authRoutes);
 
 // Health check
 app.get("/health", (req: Request, res: Response) => {
