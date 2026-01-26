@@ -4,7 +4,7 @@ import {
   deleteTaskController,
   getTasksController,
   updateTaskController,
-} from "../controllers/task";
+} from "../controllers/task.controller";
 
 const router = Router();
 

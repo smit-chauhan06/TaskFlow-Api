@@ -1,6 +1,6 @@
 // This is just for learning the real architecture is services and controller
 import { Request, Response, Router } from "express";
-import Task from "../models/test";
+import Task from "../models/test.model";
 import { asyncHandler } from "../utils/asyncHandler";
 import { ApiError } from "../utils/ApiError";
 

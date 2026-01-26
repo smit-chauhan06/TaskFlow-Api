@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../models/user.model";
 import { ApiError } from "../utils/ApiError";
 
 export const signup = async (name: string, email: string, password: string) => {

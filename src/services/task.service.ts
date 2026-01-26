@@ -1,4 +1,4 @@
-import Task from "../models/test";
+import Task from "../models/test.model";
 import { ApiError } from "../utils/ApiError";
 import mongoose from "mongoose";
 

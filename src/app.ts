@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
-import taskRoutes from "./routes/task";
-import authRoutes from "./routes/auth";
+import taskRoutes from "./routes/task.route";
+import authRoutes from "./routes/auth.route";
 import { errorHandler } from "./middlewares/error";
 
 const app = express();

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { asyncHandler } from "../utils/asyncHandler";
-import * as taskService from "../services/task";
+import * as taskService from "../services/task.service";
 
 export const createTaskController = asyncHandler(
   async (req: Request, res: Response) => {
