@@ -12,3 +12,17 @@ export const signupController = asyncHandler(
     });
   },
 );
+
+export const loginController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+
+    const { user, token } = await authService.login(email, password);
+
+    res.json({
+      success: true,
+      token,
+      user,
+    });
+  },
+);
